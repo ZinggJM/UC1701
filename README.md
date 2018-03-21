@@ -1,5 +1,9 @@
 # UC1701
 
+## modified for use with HW SPI and Adafruit_GFX by Jean-Marc Zingg for
+- https://www.aliexpress.com/item/12864-LCD-screen-module-20PIN-KS0108-Oor-KS0107-controller-Red-word-on-the-black-background/32215047945.html
+- and with https://github.com/olikraus/U8g2_for_Adafruit_GFX
+
 This library is used to control the onboard 128x64 LCD of Industruino. It allows you to display text and simple graphics with a minimum of overhead.
 
 * [UC1701](#uc1701) - LCD display

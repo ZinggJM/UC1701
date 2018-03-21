@@ -44,41 +44,49 @@
  * using a 3.3V variant of the Arduino, such as Sparkfun's Arduino Pro).
  */
 
-
 #include <UC1701.h>
 
 // A custom glyph (a smiley)...
 static const byte glyph[] = { B00010000, B00110100, B00110000, B00110100, B00010000 };
 
+#if defined (ESP8266)
+UC1701 lcd(SPI, SS, 0, 2);
+#else
+static UC1701 lcd; // Industrino
+#endif
 
-static UC1701 lcd;
 
-
-void setup() {
+void setup() 
+{
   // PCD8544-compatible displays may have a different resolution...
   lcd.begin();
   // Add the smiley to position "0" of the ASCII table...
   lcd.createChar(0, glyph);
+  lcd.clear();
 }
 
 
-void loop() {
+void loop() 
+{
   // Just to show the program is alive...
   static int counter = 0;
 
+  lcd.clear();
+  lcd.setTextColor(0x0000, 0xFFFF);
+
   // Write a piece of text on the first line...
-  lcd.setCursor(0, 0);
+  lcd.setLineCursor(0, 0);
   lcd.print("Hello, World!");
 
   // Write the counter on the second line...
-  lcd.setCursor(0, 1);
+  lcd.setLineCursor(0, 1);
   lcd.print(counter, DEC);
   lcd.write(' ');
   lcd.write(0);  // write the smiley
+  lcd.display(); // display the buffer content
 
   delay(500);  
   counter++;
 }
-
 
 /* EOF - HelloWorld.ino */
