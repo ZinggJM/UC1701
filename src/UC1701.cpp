@@ -144,7 +144,7 @@ void UC1701::begin()
 
 void UC1701::clear()
 {
-  for (uint16_t i = 0; i < sizeof(_buffer) / 8; i++)
+  for (uint16_t i = 0; i < sizeof(_buffer); i++)
   {
     _buffer[i] = 0x00; // light
   }
